@@ -1,0 +1,25 @@
+<?php
+
+include 'connect.php';
+
+?>
+<html>
+<head>
+	<title>Appointments</title>
+</head>
+<body>
+	
+	<?php
+
+	$doctor = $_SESSION['user'];
+	$result = mysql_query("SELECT patient FROM appointments WHERE doctor = '$doctor'");
+
+	foreach($row as mysql_fetch_assoc($result)) {
+	?>
+	<p><?php echo $row['patient']; ?></p>
+	<?php
+	}
+	?>
+
+</body>
+</html>
