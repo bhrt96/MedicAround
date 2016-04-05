@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel = "stylesheet" href = "css/materialize.css" />
+	<link rel = "stylesheet" href = "css/homestyles.css" />
+</head>
+<body class =  "">
+
+	<!-- <div class = "row full-height"> -->
+
+		<div class = "row fixed center-align site-name hide-on-small-only">
+			<h4>SiteName</h4>
+		</div>
+
+		<div class = "row teal center-align site-name hide-on-med-and-up " style = "margin: 0">
+			<h4 style = "margin: 0;height: 50px;border-bottom:1px solid black;lineheight: 60px;" class = "">SiteName</h4>
+		</div>
+
+		<div class = "row full-height categories">
+			<a class = "modal-trigger"  href="#patientlogin">
+				<div class = "col s12 m6 teal full-height category left waves-effect">
+				</div>
+			</a>
+			<a class = "modal-trigger"  href="#doctorlogin">
+				<div class = "col s12 m6 teal lighten-2 full-height category right waves-effect">
+				</div>
+			</a>
+		</div>
+
+		<footer>
+			<div class = "row center-align orange full-height">
+				<a href = "#" class = "black-text">About Us</a>
+
+			</div>
+		</footer>
+	
+
+		<!-- Modal Structure -->
+		<div id ="patientlogin" class = "modal">
+			<div class="modal-content">
+				<h4 class = "center-align">Login</h4>
+				<form class = "col s12" action = "login.php" method = "post">
+					<div class = "row">
+						<div class = "input-field col s12">
+							<input name = "username" id = "first_name" type = "text" required>
+							<label for = "first_name" class ="">Username</label>
+						</div>
+						<div class = "input-field col s12">
+							<input name = "password" id = "last_name" type = "text" required>
+							<label for = "last_name" class = "">Password</label>
+						</div>
+					</div>
+					<div class = "row center">
+						<button class="btn waves-effect waves-light" type="submit" name="login">
+							Submit
+						</button>
+					</div>
+					<div class = "row center-align">
+						<a href = "patientRegistration.html" class = "center-align">Not registered yet?Register here</a>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div id ="doctorlogin" class = "modal">
+			<div class="modal-content">
+				<h4 class = "center-align">Login</h4>
+				<form class = "col s12" action = "login.php" method = "post">
+					<div class = "row">
+						<div class = "input-field col s12">
+							<input name = "username" id = "first_name" type = "text" required>
+							<label for = "first_name" class ="">Username</label>
+						</div>
+						<div class = "input-field col s12">
+							<input name = "passsword" id = "last_name" type = "text" required>
+							<label for = "last_name" class = "">Password</label>
+						</div>
+					</div>
+					<div class = "row center">
+						<button class="btn waves-effect waves-light" type="submit" name="login">
+							Submit
+						</button>
+					</div>
+					<div class = "row center-align">
+						<a href = "doctorRegistration.html" class = "center-align">Not registered yet?Register here</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	          
+<script src = "js/jquery-1.12.2.js"></script>
+<script src = "js/materialize.js"></script>
+<script src = "js/TweenLite.js"></script>
+<script>
+	 $(document).ready(function(){
+	    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+	    $('.modal-trigger').leanModal();
+	  });
+</script>
+</body>
+</html>
