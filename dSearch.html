@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel = "stylesheet" href = "css/materialize.css" />
+	<link rel = "stylesheet" href = "css/homestyles.css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src = "js/jquery-1.12.2.js"></script>
+	<script src = "js/materialize.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
+	<script type="text/javascript" src="js/location.js"></script>
+</head>
+<body class =  "">
+
+		<div class = "row left-align site-name not-on-home-page">
+			<div class = "col s8">
+				<h4 ><a class="red-text text-lighten-2" href = "index.html">Sitename</a></h4>
+			</div>
+			<div class = "col s4">
+				<p class = "right-align">
+					<a href = "patientHome.html" class = " tooltipped " data-position="bottom" data-delay="50" data-tooltip="My Account" style="cursor:pointer;padding-right: 20px">
+						<i class = "material-icons red-text text-lighten-2">perm_identity</i>
+  					</a>
+  				</p>
+  			</div>
+		</div>
+
+		<!-- <div class = "row teal center-align site-name hide-on-med-and-up " style = "margin: 0">
+			<h4 style = "margin: 0;height: 50px;border-bottom:1px solid black;lineheight: 60px;" class = "">
+				SiteName
+			</h4>
+		</div> -->
+
+		<div class = "row">
+			<div class = "row">
+				<!-- <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
+				<div class = "col s11-5 offset-s11-5-custom" id="map" ></div>
+			</div>
+
+			<div class = "row" id = "search-options">
+				<div class = "col s6 card-panel offset-s3">
+					<form class = "col s12" action = "">
+						<div class="input-field col s12">
+							<select required>
+								<option value="" disabled selected>Choose your option</option>
+								<option value="heart">Cardiologist</option>
+								<option value="cancer">Cancer</option>
+								<option value="">Kidney</option>
+							</select>
+							<label>Specialization</label>
+						</div>
+					</form>
+				</div>
+			</div>
+		
+			<div class="row" >
+				<div class="card-panel col s11-5 offset-s11-5-custom">
+					<table class="highlight" >
+				        <thead>
+				        	<tr>
+				           		<th data-field="id">Doctor's Name</th>
+				            	<th data-field="specialization">Specialization</th>
+				            	<th data-field="hospital">Hospital</th>
+				            	<th data-field="distance">Distance</th>
+				            	<th data-field="rating">Rating</th>
+
+				            </tr>
+				        </thead>
+				        <tbody>
+				          	
+				          	<tr>
+					            <td><a href="">Alvin</a></td>
+					            <td>Eclair</td>
+					            <td>lair</td>
+				            	<td>$0.87</td>
+				            	<td>$0.87</td>
+				          	</a></tr>
+				          	
+				          	<tr>
+		           				<td><a href="">Alan</a></td>
+					            <td>Jellybean</td>
+					            <td>Jellybean</td>
+					            <td>$3.76</td>
+					            <td>$3.76</td>
+				          	</tr>
+				          	</a>
+				          	
+				          	<tr>
+					            <td><a href="">Jonathan</a></td>
+					            <td>Lollipop</td>
+					            <td>Lollipop</td>
+					            <td>$7.00</td>
+					            <td>$7.00</td>
+				          	</tr>
+				          	</a>
+				        </tbody>
+				    </table>
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			<nav class = "red lighten-2">
+				<div class="nav-wrapper">
+					<a href="#" class="waves-effect">Copyright Us</a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a href="sass.html" class = "waves-effect">About Us</a></li>
+						<li><a href="badges.html" class = "waves-effect">Contact Us</a></li>
+						<li><a href="collapsible.html" class = "waves-effect">Terms and Conditions</a></li>
+					</ul>
+				</div>
+			</nav>
+		</footer>
+	
+
+		<!-- Modal Structure -->
+		<div id ="patientlogin" class = "modal">
+			<div class="modal-content">
+				<h4 class = "center-align">Login</h4>
+				<form class = "col s12" action = "login.php" method = "post">
+					<div class = "row">
+						<div class = "input-field col s12">
+							<input name = "username" id = "username" type = "text" required>
+							<label for = "username" class ="">Username</label>
+						</div>
+						<div class = "input-field col s12">
+							<input name = "password" id = "patientpassword" type = "password" required>
+							<label for = "patientpassword" class = "">Password</label>
+						</div>
+					</div>
+					<div class = "row center">
+						<button class="btn waves-effect waves-light" type="submit" name="login">
+							Submit
+						</button>
+					</div>
+					<div class = "row center-align">
+						<p class = "center-align center">
+							<a href = "patientRegistration.html" class = "center-align">Register here</a>
+							<a href = "dSearch.html" class = "right red-text"><strong>SKIP</strong></a>
+						</p>
+					</div>
+				</form>
+			</div>
+		</div>
+			          
+<script>
+	$(document).ready(function(){
+	// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+		$('.modal-trigger').leanModal();
+		$('select').material_select();
+	});
+
+	$(document).ready(function(){
+		takeCareOfMapClicks();
+		if (navigator.geolocation)  {
+   			navigator.geolocation.getCurrentPosition();
+   		} else  {
+ 			console.log("Geolocation is not supported by this browser.");
+ 		} 
+	});
+
+	function takeCareOfMapClicks(){
+		$(document).on("click","#map",function(e){
+			$("div.hover-card").remove();
+			var left,top;
+			left = e.pageX - 150;
+            top = e.pageY - 130;
+			console.log($("body").append($("<div class = 'hover-card card-panel hoverable' style = 'top:" + top + "px;left:" + left + "px'>asd</p>")) );
+		});
+
+		// $(document).on("keypress",function(){
+		// 	if(e.keyCode == 27)
+		// 		alert("adsa");
+		// });
+	
+	}
+
+</script>
+</body>
+</html>

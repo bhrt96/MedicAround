@@ -21,6 +21,22 @@ html,body{
 	z-index: 10;
 }
 
+.site-name.not-on-home-page h4{
+	margin-top: 0px !important;
+	margin-bottom: 3px !important;
+	padding-top: 10px;
+	text-indent: 30px;
+}
+
+.site-name.not-on-home-page h4:after{
+	/*content: "";*/
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100px; 
+	border: 1px solid #2196F3;
+}
+
 .row.categories{
 	margin-bottom: 0 !important;
 	height: calc(100vh - 30px);
@@ -29,35 +45,135 @@ html,body{
 .category{
 	cursor: pointer;
 	opacity: 0.5;
+	padding-top: 5% !important;  
 	transition: opacity 0.5s;
 }
 
-.category.left:hover{
+.category:hover{
 	opacity: 1;
-	/*box-shadow: white 5px 0px 10px 0px; */
 }
 
-.category.right:hover{
-	opacity: 1;
-	/*box-shadow: white -5px 0px 10px 0px; */
+.category.left:after{
+	position: absolute;
+	content: "";
+	height: 86%;
+	top: 11%;
+	right: 0;
+	border: 1px solid #2196F3;
+	/*border-right: 2px solid black;*/
 }
 
-.col.offset-custom{
-	margin-left: 6% !important;
+.category p{
+	font-size: 1.3em;
 }
 
 footer{
 	height: 30px;
-}
-
-footer,footer div.row{
 	margin-bottom: 0;
 }
 
-.modal{
+footer nav{
+	height: 100%;
+	line-height: 30px !important
+}
+
+footer nav .nav-wrapper{
+	line-height: 0px !important;
+}
+
+footer nav a,nav ul li a{
+	padding: 0px 10px;
+	line-height: 30px !important;
+}
+
+footer nav ul li{
+	line-height: initial !important;
+}
+
+#doctorlogin.modal,#patientlogin.modal{
 	max-width: 400px;
 	min-width: 300px;
 	margin: 0;
 	top: 30px;
 	left: calc(50% - 200px);
 }
+
+#doctorlogin.modal form div:last-child.row,
+#patientlogin.modal form div:last-child.row{
+	margin-bottom: 0px !important;
+}
+
+#vertical-separator{
+	width: 100vh;
+	transform: rotateZ(90deg);
+	border: 1px solid blue;
+}
+
+#map{
+	height: calc(100vh - 240px);
+}
+
+div.row.hide-controls{
+	display: none !important;
+}
+
+#search-options{
+	margin-bottom: 0px !important;
+}
+
+.col.s11-5{
+	width: calc(91.6666666667% + 8.333333%/2) !important;
+}
+
+.offset-s11-5-custom{
+	margin-left: calc(8.333333%/4) !important;
+}
+
+#doctor-tabs.tabs{
+	overflow: initial !important;
+}
+
+.col.s12.tab{
+	min-height: calc(100vh - 201px);
+}
+
+#profile{
+	padding-top: 30px;
+}
+
+#trivial-details .col.s6#map{
+	height: 200px;
+}
+
+.waves-effect.waves-blue .waves-ripple {
+	background-color: #96C7EF;
+}
+
+#doctor-tabs.tabs .indicator{
+	background-color: #2196F3 !important;
+}
+
+#page-controls p a{
+	margin: 0px 20px !important;
+}
+
+.hover-card{
+	position: absolute;
+	width: 200px;
+	height: 60px;
+	cursor: pointer;
+	margin: 0px !important;
+	padding: 0px !important
+}
+
+/*.hover-card:after{
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	z-index: -1;
+	left: 0px;
+	width: 20px;
+	height: 20px;
+	box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	transform: rotateZ(45deg);
+}*/
