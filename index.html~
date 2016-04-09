@@ -7,6 +7,8 @@
 </head>
 <body class =  "">
 
+	<!-- <div class = "row full-height"> -->
+
 		<div class = "row blue-text fixed center-align site-name on-home-page">
 			<h4>MedicAround</h4>
 		</div>
