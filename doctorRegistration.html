@@ -8,7 +8,7 @@
 	<script src = "js/jquery-1.12.2.js"></script>
 	<script src = "js/materialize.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
-	<script type="text/javascript" src="js/location.js"></script>
+	<script type="text/javascript" src="js/location_login.js"></script>
 </head>
 <body class =  "">
 
@@ -24,7 +24,7 @@
 					<h5 class = "center-align">Doctor's Registration</h5>
 				</div>
 				<div class = "row">
-					<form class = "col s12" action = "register.php" method = "post">
+					<form class = "col s12" action = "scripts/register.php" method = "post">
 						<div class = "row">
 							<div class = "input-field col s12 m12">
 								<input name = "name" id = "first_name" type = "text" required>
@@ -97,18 +97,9 @@
 						<div class="input-field col s12">
 							<select name = "specialisation" required>
 								<option value="" disabled selected>Choose your option</option>
-									<option value="Dentist">Dentist</option>
-									<option value="Ophthalmologist">Ophthalmologist</option>
-									<option value="Dermatologist">Dermatologist</option>
-									<option value="Homeopath">Homeopath</option>
-									<option value="Ayurveda">Ayurveda</option>
-									<option value="Cardiologist">Cardiologist</option>
-									<option value="Gastroenterologist">Gastroenterologist</option>
-									<option value="Psychiatrist">Psychiatrist</option>
-									<option value="Ear-Nose-Throat (ENT)">Ear-Nose-Throat (ENT)</option>
-									<option value="Gynecologist/Obstetrician">Gynecologist/Obstetrician</option>
-									<option value="Neurologist">Neurologist</option>
-									<option value="Urologist">Urologist</option>
+								<option value="heart">Cardiologist</option>
+								<option value="cancer">Cancer</option>
+								<option value="">Kidney</option>
 							</select>
 							<label>Specialization</label>
 						</div>

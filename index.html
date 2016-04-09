@@ -10,7 +10,7 @@
 	<!-- <div class = "row full-height"> -->
 
 		<div class = "row blue-text fixed center-align site-name on-home-page">
-			<h4><a href = "index.html">Sitename</a></h4>
+			<h4>MedicAround</h4>
 		</div>
 
 		<!-- <div class = "row blue center-align site-name hide-on-med-and-up " style = "margin: 0">
@@ -19,7 +19,7 @@
 			</h4>
 		</div> -->
 
-		<div class = "row categories">
+		<div class = "row full-height categories">
 			<a class = "modal-trigger"  href="#patientlogin">
 				<div class = "col s6 m6 full-height category patient left waves-effect center">
 					<div class = "col s6 push-s3">
@@ -56,19 +56,19 @@
 		<div id ="patientlogin" class = "modal">
 			<div class="modal-content">
 				<h4 class = "center-align">Login</h4>
-				<form class = "col s12" action = "login.php" method = "post">
+				<form class = "col s12" action = "scripts/patient_login.php" method = "post">
 					<div class = "row">
 						<div class = "input-field col s12">
 							<input name = "username" id = "username" type = "text" required>
 							<label for = "username" class ="">Username</label>
 						</div>
 						<div class = "input-field col s12">
-							<input name = "password" id = "patientpassword" type = "password" required>
-							<label for = "patientpassword" class = "">Password</label>
+							<input name = "password" id = "password" type = "password" required>
+							<label for = "password" class = "">Password</label>
 						</div>
 					</div>
 					<div class = "row center">
-						<button class="btn waves-effect waves-light" type="submit" name="login">
+						<button class="btn waves-effect waves-light" type="submit" name="patientlogin">
 							Submit
 						</button>
 					</div>
@@ -85,19 +85,19 @@
 		<div id ="doctorlogin" class = "modal">
 			<div class="modal-content">
 				<h4 class = "center-align">Login</h4>
-				<form class = "col s12" action = "login.php" method = "post">
+				<form class = "col s12" action = "scripts/dr_login.php" method = "post">
 					<div class = "row">
 						<div class = "input-field col s12">
 							<input name = "username" id = "username" type = "text" required>
 							<label for = "username" class ="">Username</label>
 						</div>
 						<div class = "input-field col s12">
-							<input name = "password" id = "doctorpassword" type = "password" required>
-							<label for = "doctorpassword" class = "">Password</label>
+							<input name = "password" id = "password" type = "password" required>
+							<label for = "password" class = "">Password</label>
 						</div>
 					</div>
 					<div class = "row center">
-						<button class="btn waves-effect waves-light" type="submit" name="login">
+						<button class="btn waves-effect waves-light" type="submit" name= "doctorlogin">
 							Submit
 						</button>
 					</div>
@@ -110,7 +110,6 @@
 	          
 <script src = "js/jquery-1.12.2.js"></script>
 <script src = "js/materialize.js"></script>
-<script src = "js/TweenLite.js"></script>
 <script>
 	 $(document).ready(function(){
 	    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

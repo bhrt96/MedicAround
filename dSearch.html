@@ -6,15 +6,16 @@
 	<link rel = "stylesheet" href = "css/homestyles.css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src = "js/jquery-1.12.2.js"></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.0/js.cookie.js"></script>
 	<script src = "js/materialize.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
-	<script type="text/javascript" src="js/location.js"></script>
+	<script type="text/javascript" src="js/location_nearby.js"></script>
 </head>
 <body class =  "">
 
 		<div class = "row left-align site-name not-on-home-page">
 			<div class = "col s8">
-				<h4 ><a class="red-text text-lighten-2" href = "index.html">Sitename</a></h4>
+				<h4 ><a class="red-text text-lighten-2" href = "index.html">MedicAround</a></h4>
 			</div>
 			<div class = "col s4">
 				<p class = "right-align">
@@ -55,7 +56,7 @@
 		
 			<div class="row" >
 				<div class="card-panel col s11-5 offset-s11-5-custom">
-					<table class="highlight" >
+					<table >
 				        <thead>
 				        	<tr>
 				           		<th data-field="id">Doctor's Name</th>
@@ -67,32 +68,6 @@
 				            </tr>
 				        </thead>
 				        <tbody>
-				          	
-				          	<tr>
-					            <td><a href="">Alvin</a></td>
-					            <td>Eclair</td>
-					            <td>lair</td>
-				            	<td>$0.87</td>
-				            	<td>$0.87</td>
-				          	</a></tr>
-				          	
-				          	<tr>
-		           				<td><a href="">Alan</a></td>
-					            <td>Jellybean</td>
-					            <td>Jellybean</td>
-					            <td>$3.76</td>
-					            <td>$3.76</td>
-				          	</tr>
-				          	</a>
-				          	
-				          	<tr>
-					            <td><a href="">Jonathan</a></td>
-					            <td>Lollipop</td>
-					            <td>Lollipop</td>
-					            <td>$7.00</td>
-					            <td>$7.00</td>
-				          	</tr>
-				          	</a>
 				        </tbody>
 				    </table>
 				</div>
@@ -150,30 +125,30 @@
 		$('select').material_select();
 	});
 
-	$(document).ready(function(){
-		takeCareOfMapClicks();
-		if (navigator.geolocation)  {
-   			navigator.geolocation.getCurrentPosition();
-   		} else  {
- 			console.log("Geolocation is not supported by this browser.");
- 		} 
-	});
+	// $(document).ready(function(){
+	// 	takeCareOfMapClicks();
+	// 	if (navigator.geolocation)  {
+ //   			navigator.geolocation.getCurrentPosition();
+ //   		} else  {
+ // 			console.log("Geolocation is not supported by this browser.");
+ // 		} 
+	// });
 
-	function takeCareOfMapClicks(){
-		$(document).on("click","#map",function(e){
-			$("div.hover-card").remove();
-			var left,top;
-			left = e.pageX - 150;
-            top = e.pageY - 130;
-			console.log($("body").append($("<div class = 'hover-card card-panel hoverable' style = 'top:" + top + "px;left:" + left + "px'>asd</p>")) );
-		});
+	// function takeCareOfMapClicks(){
+	// 	$(document).on("click","#map",function(e){
+	// 		$("div.hover-card").remove();
+	// 		var left,top;
+	// 		left = e.pageX - 150;
+ //            top = e.pageY - 130;
+	// 		console.log($("body").append($("<div class = 'hover-card card-panel hoverable' style = 'top:" + top + "px;left:" + left + "px'>asd</p>")) );
+	// 	});
 
 		// $(document).on("keypress",function(){
 		// 	if(e.keyCode == 27)
 		// 		alert("adsa");
 		// });
 	
-	}
+	// }
 
 </script>
 </body>

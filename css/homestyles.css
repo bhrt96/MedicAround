@@ -141,8 +141,8 @@ div.row.hide-controls{
 	padding-top: 30px;
 }
 
-#trivial-details .col.s6#map{
-	height: 200px;
+#trivial-details .col.s12#map{
+	height: 300px;
 }
 
 .waves-effect.waves-blue .waves-ripple {
@@ -165,6 +165,20 @@ div.row.hide-controls{
 	margin: 0px !important;
 	padding: 0px !important
 }
+
+
+.dr_profile_info p{
+	/*font-size: ;*/
+}
+
+.info_win{
+
+}
+
+blockquote.blue-left-border{
+	border-left-color: #2196F3;
+}
+
 
 /*.hover-card:after{
 	content: "";

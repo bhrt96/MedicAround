@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -6,15 +11,17 @@
 	<link rel = "stylesheet" href = "css/homestyles.css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src = "js/jquery-1.12.2.js"></script>
+	<script src="js/socket.io.js"></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.0/js.cookie.js"></script>
 	<script src = "js/materialize.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
-	<script type="text/javascript" src="js/location.js"></script>
+	<!-- <script type="text/javascript" src="js/location_details.js"></script> -->
+	<script type="text/javascript" src="js/drprofile.js"></script>
 </head>
 <body class =  "">
-
 		<div class = "row left-align site-name not-on-home-page">
 			<div class = "col s10">
-				<h4 class="blue-text"><a href = "index.html">Sitename</a></h4>			
+				<h4 class="blue-text"><a href = "index.html">MedicAround</a></h4>			
 			</div>
 			<div class = "col s2" id = "page-controls">
 				<p class = "right-align"><!-- 
@@ -36,12 +43,11 @@
 						<li class="tab col s3 waves-effect waves-blue">
 							<a href="#profile" class = "active blue-text">Profile</a>
 						</li>
+						<?php if ($_SESSION['type'] == "doctor") { ?>
 						<li class="tab col s3 waves-effect waves-blue">
-							<a href="#appointments" class = "blue-text">Appointments<span class = "new badge">0</span></a>
+							<a href="#appointments" class = "blue-text">Appointments</a>
 						</li>
-						<li class="tab col s3 waves-effect waves-blue">
-							<a href="#feedbacks" class = "blue-text">Feedbacks</a>
-						</li>
+						<?php } ?>
 					</ul>
 			    </div>
 
@@ -51,192 +57,71 @@
 			    			<img class=" responsive-img" src = "images/docprofile.jpg">
 			    		</div>
 			    		<div class = "col s5 offset-s1">
-			    			<div class = "">
-			    				<p>Dr.Maharshi Roy</p>
-			    				<p>maharshi@maharshi.roy</p>
-			    				<p>+91 - 9000000000</p>
-			    				<p>+91 - 9000000000</p>
+			    			<div class = "dr_profile_info">
+			    				
 			    				<div class = "row">
-			    					<div class = "col s6" id = "map"></div>
-			    					<div class = "col s5 offset-s1">
-			    						<p>Address: </p>
-			    						<p>Address</p>
-			    					</div>
+			    					<div class = "col s12" id = "map"></div>
 			    				</div>
 			    			</div>
 			    		</div>
 			    		<div class = "col s1">
-			    			<div class = "row right-align">
-			    				<a class="modal-trigger tooltipped" data-position="left" data-delay="50" data-tooltip="Edit your profile" style="cursor:pointer" href = "#profileEdit">
+			    			<!--<div class = "row right-align">
+			    				<a href = "#profileEdit" class="modal-trigger tooltipped" data-position="left" data-delay="50" data-tooltip="Edit your profile" style="cursor:pointer">
 			    					<i class = "material-icons">mode_edit</i>
 			    				</a>
+				    		</div>-->
+				    		<?php //if ($_SESSION['type'] != "doctor") { ?>
+				    		<div class = "row right-align">
+			    				<a href = "#patientlogin" id='appointment_button' class="modal-trigger btn tooltipped blue" data-position="left" data-delay="50" data-tooltip="Add appointment" style="cursor:pointer">
+			    					Appointment
+			    				</a>
 				    		</div>
+				    		<?php //} ?>
 			    		</div>
 			    	</div>
 			    </div>
+			    <?php if ($_SESSION['type'] == "doctor") {
+			    include 'scripts/connect.php';
+			    $result = mysql_query("SELECT * FROM appointments");
+			    ?>
 			    <div id="appointments" class="col s12 tab">
 					<table>
 						<thead>
 							<tr>
 								<th data-field="id">Patient's Name</th>
+								<th>Date</th>
 								<th>Time</th>
-								<th>Your Reply</th>								
-								<th>Patient Reply</th>
-								<th>Status</th>
-
+								<th>Your Reply</th>
 							</tr>
 						</thead>
 						<tbody>
+							<?php while($row = mysql_fetch_row($result)) {
+								$patient = $row[0];
+							}
+							?>
 							<tr>
-								<td>Alvin</td>
-								<form name = "" action = "">
+								<form action = "scripts/doctorresponse.php" method = "post">
+									<input type = "hidden" value = "<?php echo $patient; ?>" name = "patient">
+									<input type = "hidden" value = "<?php echo $_SESSION['user']; ?>" name = "doctor">
+									<td><?php echo $patient; ?></td>
 									<td>
-
-										<label for = "time-slot">Time Slot</label>
-										<input type = "time" id = "time-slot">
-									</td>								
+										<label for = 'appointment-date'></label>
+										<input type = 'date' id = 'appointment-date' name='date'>
+									</td>
 									<td>
-										<button class="btn-floating btn-small waves-effect waves-light green" type = "submit" name = "action"><i class="material-icons tiny">done</i></button>
-										<!-- <button class="btn-floating btn-small waves-effect waves-light red" type = "submit" name = "action"><i class="material-icons tiny">not_interested</i></button> -->
+										<label for = 'time-slot'></label>
+										<input type = 'time' id = 'time-slot' name='time'></td>
+									<td>
+										<button type = 'submit' name = 'reply' id='reply_yes' value='1' class='btn-floating btn-small waves-effect waves-light green'><i class='material-icons tiny'>done</i></button>
+										<button type = 'submit' id='reply_no' name = 'reply' value='0' class='btn-floating btn-small waves-effect waves-light red'><i class='material-icons tiny'>not_interested</i></button>
 									</td>
 								</form>
-								<td>
-									Yes
-								</td>
-								<td>
-									Over
-								</td>
 							</tr>
-							<tr>
-								<td>Alvin</td>
-								<form name = "" action = "">
-									<td>
-										<label for = "time-slot">Time Slot</label>
-										<input type = "time" id = "time-slot">
-									</td>								
-									<td>
-										<button class="btn-floating btn-small waves-effect waves-light green" type = "submit" name = "action"><i class="material-icons tiny">done</i></button>
-										<button class="btn-floating btn-small waves-effect waves-light red" type = "submit" name = "action"><i class="material-icons tiny">not_interested</i></button>
-									</td>
-								</form>
-								<td>
-									--
-								</td>
-								<td>
-									Pending
-								</td>
-							</tr>
+							
 						</tbody>
 					</table>
 			    </div>
-			    <div id="feedbacks" class="col s12 tab">
-					<div class="row col s12">
-						<p class="bold">Doctor 1</p>
-						<p class="flow-text "><small>I am Flow Text</small></p>
-					</div>
-					<div class="row col s12">
-						<p class="bold">Doctor 2</p>
-						<p class="flow-text"><small>I am Flow Text</small></p>
-					</div>
-					<div class="row col s12">
-						<p class="bold">Doctor 3</p>
-						<p class="flow-text"><small>I am Flow Text</small></p>
-			  		</div>
-			    </div>
-
-			</div>
-		</div>
-
-		<div id="profileEdit" class="modal modal-content " style="width:80% !important; padding:5px 10px 5px 10px;"><br>
-			<div class = "row">
-				<h5 class = "center-align">Edit Form</h5>
-			</div>
-			<div class = "row">
-				<form class = "col s12" action = "register.php" method = "post">
-					<div class = "row">
-						<div class = "input-field col s12 m12">
-							<input name = "name" id = "first_name" type = "text" required>
-							<label for = "name" class ="">Name</label>
-						</div>
-					</div>
-					<div class = "row">
-						<div class = "input-field col s12 m6">
-							<input name = "email" id = "email" type = "email" required>
-							<label for="email">Email</label>
-						</div>
-						<div class = "input-field col s12 m6" required>
-							<input name = "phone" id = "phone" type = "tel">
-							<label for="phone">Phone</label>
-						</div>
-					</div>
-					<div class = "row">
-						<div class = "input-field col s12 m6">
-							<input name = "username" id = "username" type = "text" required>
-							<label for="username">Username</label>
-						</div>
-						<div class = "input-field col s12 m6">
-							<input name = "password" id = "password" type = "password" required>
-							<label for="password">Password</label>
-						</div>
-					</div>
-
-					<div class = "row">
-						<div class="input-field col s12">
-      						<input type = "number" id = "experience" required>
-      						<label for="experience">Experience(In Years)</label>
-   						</div>
-					</div>
-
-					<div class = "row">
-						<div class="input-field col s12">
-      						<textarea name = "qualification" id="qualification" class="materialize-textarea" required></textarea>
-      						<label for="qualification">Qualification</label>
-   						</div>
-					</div>
-
-					<div class = "row">
-						<div class = "row">
-							<div class = "col s10 offset-s1"  id="map" ></div>
-							<div class = "row hide-controls">
-								<input name = "lat" id = "lat" type = "text" required>
-								<input name = "long" id = "long" type = "text" required>
-							</div>
-						</div>
-					</div>
-					
-					<div class = "row">
-						<div class = "col s12 m6">
-							<div class = "row valign-wrapper">
-								<p class = "left-align valign">
-									Gender :  
-									<p>
-										<input name = "gender" class="" name="gender" type="radio" id="male" value = "M" required/>
-										<label for="male">Male</label>
-									</p>
-									<p class = "margin-left: 10px">
-										<input name = "gender" class="" name="gender" type="radio" id="female" value = "F" required/>
-										<label for="female">Female</label>
-									</p>
-									</p>
-								</div>
-						</div>
-					</div>
-
-					<div class="input-field col s12">
-						<select name = "specialisation" required>
-							<option value="" disabled selected>Choose your option</option>
-							<option value="heart">Cardiologist</option>
-							<option value="cancer">Cancer</option>
-							<option value="">Kidney</option>
-						</select>
-						<label>Specialization</label>
-					</div>
-					<div class = "row center">
-						<button class="btn waves-effect waves-light" type="submit" name="docregister">
-							Submit
-							</button>
-						</div>
-				</form>
+			    <?php } ?>
 			</div>
 		</div>
 
@@ -258,14 +143,14 @@
 		<div id ="patientlogin" class = "modal">
 			<div class="modal-content">
 				<h4 class = "center-align">Login</h4>
-				<form class = "col s12" action = "login.php" method = "post">
+				<form class = "col s12" action = "scripts/patient_app_login.php" method = "post">
 					<div class = "row">
 						<div class = "input-field col s12">
 							<input name = "username" id = "first_name" type = "text" required>
 							<label for = "first_name" class ="">Username</label>
 						</div>
 						<div class = "input-field col s12">
-							<input name = "password" id = "last_name" type = "text" required>
+							<input name = "password" id = "last_name" type = "password" required>
 							<label for = "last_name" class = "">Password</label>
 						</div>
 					</div>
@@ -277,7 +162,6 @@
 					<div class = "row center-align">
 						<p class = "center-align center">
 							<a href = "patientRegistration.html" class = "center-align">Register here</a>
-							<a href = "dSearch.html" class = "right red-text"><strong>SKIP</strong></a>
 						</p>
 					</div>
 				</form>
