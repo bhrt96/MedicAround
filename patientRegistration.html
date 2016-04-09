@@ -5,13 +5,17 @@
 	<link rel = "stylesheet" href = "css/materialize.css" />
 	<link rel = "stylesheet" href = "css/homestyles.css" />
 	<link rel = "stylesheet" href = "css/regstyles.css" />
+	<script src = "js/jquery-1.12.2.js"></script>
+	<script src = "js/materialize.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
+	<script type="text/javascript" src="js/location.js"></script>
 </head>
 <body class =  "">
 
 	<div class = "row full-height">
 
 		<div class = "row center-align site-name">
-			<h4>SiteName</h4>
+			<h4><a href = "index.html">Sitename</a></h4>
 		</div>
 
 		<div class = "row">
@@ -24,73 +28,62 @@
 
 						<div class = "row">
 							<div class = "input-field col s12 m12">
-								<input name = "name" id = "first_name" type = "text">
+								<input name = "name" id = "first_name" type = "text" required>
 								<label for = "name" class ="">Name</label>
 							</div>
 						</div>
 
 						<div class = "row">
 							<div class = "input-field col s12 m6">
-								<input name = "email" id = "email" type = "email">
-								<label for "email">Email</label>
+								<input name = "email" id = "email" type = "email" required>
+								<label for ="email">Email</label>
 							</div>
 							<div class = "input-field col s12 m6">
-								<input name = "username" id = "username" type = "text">
-								<label for "username">Username</label>
+								<input name = "username" id = "username" type = "text" required>
+								<label for ="username">Username</label>
 							</div>
 						</div>
 
 						<div class = "row">
 							<div class = "input-field col s12 m6">
-								<input name = "password" id = "password" type = "password">
-								<label for "password">Password</label>
+								<input name = "password" id = "password" type = "password" required>
+								<label for ="password">Password</label>
 							</div>
 							<div class = "input-field col s12 m6">
-								<input name = "phone" id = "phone" type = "tel">
-								<label for "phone">Phone</label>
+								<input name = "phone" id = "phone" type = "tel" required>
+								<label for ="phone">Phone</label>
 							</div>
 						</div>
 
 						<div class = "row">
-							<div class="input-field col s12 m4">
-								<select>
-									<option value="" disabled selected>Choose your state</option>
-									<option value="heart">Cardiologist</option>
-									<option value="cancer">Cancer</option>
-									<option value="">Kidney</option>
-								</select>
-								<label>State</label>
-							</div>
-							<div class="input-field col s12 m4">
-								<select>
-									<option value="" disabled selected>Choose your city</option>
-									<option value="heart">Cardiologist</option>
-									<option value="cancer">Cancer</option>
-									<option value="">Kidney</option>
-								</select>
-								<label>City</label>
-							</div>
-							<div class = "input-field col s12 m4">
-								<input id = "locality" type = "text">
-								<label for "locality">Street-no and/or building name</label>
+							<div class = "row">
+								<label for = "map">Mark your location</label>
+								<div class = "col s12" id="map" ></div>
+
+								<div class = "row hide-controls">
+									<input name = "lat" id = "lat" type = "text" required>
+									<input name = "long" id = "long" type = "text" required>
+								</div>
 							</div>
 						</div>
 						
 						<div class = "row">
 							<div class = "col s12 m6">
-								<label>Birth date</label>
-								<input type="date" class="datepicker">
+								<div class = "input-field">
+									<input type = "number" id = "age">
+									<label for = "age">Age</label>
+								</div>
 							</div>
 							<div class = "col s12 m6">
 								<div class = "row valign-wrapper">
 									<p class = "left-align valign">
 										Gender :  
 										<p>
-											<input name = "gender" class="" name="gender" type="radio" id="male" value = "M" />
+											<input name = "gender" class="" name="gender" type="radio" id="male" value = "M" required/>
 											<label for="male">Male</label>
 										</p>
 										<p class = "margin-left: 10px">
-											<input name = "gender" class="" name="gender" type="radio" id="female" value = "F" />
+											<input name = "gender" class="" name="gender" type="radio" id="female" value = "F" required/>
 											<label for="female">Female</label>
 										</p>
   									</p>
@@ -103,28 +96,30 @@
 								Submit
   							</button>
   						</div>
+
 					</form>
 				</div>
 			</div>
 		</div>
+		
 		<footer>
-			<div class = "row center-align orange full-height">
-				<a href = "#" class = "black-text">About Us</a>
-			</div>
+			<nav class = "blue">
+				<div class="nav-wrapper">
+					<a href="#" class="waves-effect">Copyright Us</a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a href="sass.html" class = "waves-effect">About Us</a></li>
+						<li><a href="badges.html" class = "waves-effect">Contact Us</a></li>
+						<li><a href="collapsible.html" class = "waves-effect">Terms and Conditions</a></li>
+					</ul>
+				</div>
+			</nav>
 		</footer>
 
 	</div>
 	
-<script src = "js/jquery-1.12.2.js"></script>
-<script src = "js/materialize.js"></script>
-<script src = "js/TweenLite.js"></script>
 <script>
 	$(document).ready(function() {
     	$('select').material_select();
-  	});
-  	$('.datepicker').pickadate({
-    	selectMonths: true, // Creates a dropdown to control month
-   	 	selectYears: 15 // Creates a dropdown of 15 years to control year
   	});
       
 </script>

@@ -9,30 +9,46 @@
 
 	<!-- <div class = "row full-height"> -->
 
-		<div class = "row fixed center-align site-name hide-on-small-only">
-			<h4>SiteName</h4>
+		<div class = "row blue-text fixed center-align site-name on-home-page">
+			<h4><a href = "index.html">Sitename</a></h4>
 		</div>
 
-		<div class = "row teal center-align site-name hide-on-med-and-up " style = "margin: 0">
-			<h4 style = "margin: 0;height: 50px;border-bottom:1px solid black;lineheight: 60px;" class = "">SiteName</h4>
-		</div>
+		<!-- <div class = "row blue center-align site-name hide-on-med-and-up " style = "margin: 0">
+			<h4 class = "white-text" style = "margin: 0;height: 50px;padding-top: 10px;" class = "">
+			Practo +
+			</h4>
+		</div> -->
 
-		<div class = "row full-height categories">
+		<div class = "row categories">
 			<a class = "modal-trigger"  href="#patientlogin">
-				<div class = "col s12 m6 teal full-height category left waves-effect">
+				<div class = "col s6 m6 full-height category patient left waves-effect center">
+					<div class = "col s6 push-s3">
+						<img class="responsive-img" src="images/patient.jpg">
+						<p>I'm a Patient.</p>
+					</div>
 				</div>
 			</a>
 			<a class = "modal-trigger"  href="#doctorlogin">
-				<div class = "col s12 m6 teal lighten-2 full-height category right waves-effect">
+				<div class = "col s6 m6 full-height category doctor right waves-effect center">
+					<div class = "col s6 push-s3">
+						<img class="responsive-img" src="images/doctor.jpg">
+						<p>I'm a Doctor.</p>
+					</div>
 				</div>
 			</a>
 		</div>
 
 		<footer>
-			<div class = "row center-align orange full-height">
-				<a href = "#" class = "black-text">About Us</a>
-
-			</div>
+			<nav class = "blue">
+				<div class="nav-wrapper">
+					<a href="#" class="waves-effect">Copyright Us</a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a href="sass.html" class = "waves-effect">About Us</a></li>
+						<li><a href="badges.html" class = "waves-effect">Contact Us</a></li>
+						<li><a href="collapsible.html" class = "waves-effect">Terms and Conditions</a></li>
+					</ul>
+				</div>
+			</nav>
 		</footer>
 	
 
@@ -43,12 +59,12 @@
 				<form class = "col s12" action = "login.php" method = "post">
 					<div class = "row">
 						<div class = "input-field col s12">
-							<input name = "username" id = "first_name" type = "text" required>
-							<label for = "first_name" class ="">Username</label>
+							<input name = "username" id = "username" type = "text" required>
+							<label for = "username" class ="">Username</label>
 						</div>
 						<div class = "input-field col s12">
-							<input name = "password" id = "last_name" type = "text" required>
-							<label for = "last_name" class = "">Password</label>
+							<input name = "password" id = "patientpassword" type = "password" required>
+							<label for = "patientpassword" class = "">Password</label>
 						</div>
 					</div>
 					<div class = "row center">
@@ -57,7 +73,10 @@
 						</button>
 					</div>
 					<div class = "row center-align">
-						<a href = "patientRegistration.html" class = "center-align">Not registered yet?Register here</a>
+						<p class = "center-align center">
+							<a href = "patientRegistration.html" class = "center-align">Register here</a>
+							<a href = "dSearch.html" class = "right red-text"><strong>SKIP</strong></a>
+						</p>
 					</div>
 				</form>
 			</div>
@@ -69,12 +88,12 @@
 				<form class = "col s12" action = "login.php" method = "post">
 					<div class = "row">
 						<div class = "input-field col s12">
-							<input name = "username" id = "first_name" type = "text" required>
-							<label for = "first_name" class ="">Username</label>
+							<input name = "username" id = "username" type = "text" required>
+							<label for = "username" class ="">Username</label>
 						</div>
 						<div class = "input-field col s12">
-							<input name = "passsword" id = "last_name" type = "text" required>
-							<label for = "last_name" class = "">Password</label>
+							<input name = "password" id = "doctorpassword" type = "password" required>
+							<label for = "doctorpassword" class = "">Password</label>
 						</div>
 					</div>
 					<div class = "row center">
@@ -83,7 +102,7 @@
 						</button>
 					</div>
 					<div class = "row center-align">
-						<a href = "doctorRegistration.html" class = "center-align">Not registered yet?Register here</a>
+						<a href = "doctorRegistration.html" class = "center-align">Register here</a>
 					</div>
 				</form>
 			</div>
